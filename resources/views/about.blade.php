@@ -1,7 +1,11 @@
 <!-- Хранится в resources/views/about.blade.php -->
 
-@extends('app')
+@extends('layouts.app')
 
+@section('links')
+    <a href={{route('articles.index')}}>Articles</a>
+    <a href={{route('articles.create')}}>Create</a>
+@endsection
 <!-- Секция, содержимое которой обычный текст. -->
 @section('title', 'О блоге')
 
