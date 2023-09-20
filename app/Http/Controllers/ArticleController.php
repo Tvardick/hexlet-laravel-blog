@@ -46,18 +46,16 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        $article = Article::find($id);
         return view('article.show', compact('article'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        $article = Article::findOrFail($id);
         return view('article.edit', compact('article'));
     }
 
@@ -77,12 +75,10 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        $data = Article::findOrFail($id);
-
-        if ($data) {
-            $data->destroy($id);
+        if ($article) {
+            $article->destroy($article->id);
         }
 
         return redirect()->route('articles.index');
